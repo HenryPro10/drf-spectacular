@@ -341,7 +341,8 @@ def build_parameter_type(
 
 
 def build_choice_field(field):
-    choices = list(OrderedDict.fromkeys(field.choices))  # preserve order and remove duplicates
+    choices = ['%s: %s' % (str(key), value) for key, value in field.choices.items()]
+    # choices = list(OrderedDict.fromkeys(field.choices))  # preserve order and remove duplicates
 
     if all(isinstance(choice, bool) for choice in choices):
         type = 'boolean'
